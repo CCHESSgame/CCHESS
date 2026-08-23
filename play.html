@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CCHESS — Play</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="play.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar glass">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                ♟
+            </div>
+
+            <span>CCHESS</span>
+
+        </div>
+
+
+        <div class="game-status">
+
+            <span class="status-dot"></span>
+
+            <span id="gameStatus">
+                White's turn
+            </span>
+
+        </div>
+
+
+        <div class="nav-actions">
+
+            <button
+                class="nav-button"
+                id="newGameButton"
+            >
+                New Game
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN -->
+
+    <main class="game-layout">
+
+
+        <!-- BOARD -->
+
+        <section class="board-section">
+
+
+            <!-- BLACK PLAYER -->
+
+            <div class="player-bar glass">
+
+                <div class="player-info">
+
+                    <div class="player-avatar black-avatar">
+                        ♟
+                    </div>
+
+                    <div>
+
+                        <span class="player-label">
+                            BLACK
+                        </span>
+
+                        <strong>
+                            CCHESS
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="clock"
+                    id="blackClock"
+                >
+                    10:00
+                </div>
+
+            </div>
+
+
+            <!-- BOARD -->
+
+            <div class="board-wrapper glass">
+
+                <div
+                    class="chess-board"
+                    id="chessBoard"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- WHITE PLAYER -->
+
+            <div class="player-bar glass">
+
+                <div class="player-info">
+
+                    <div class="player-avatar">
+                        ♙
+                    </div>
+
+                    <div>
+
+                        <span class="player-label">
+                            WHITE
+                        </span>
+
+                        <strong id="accountName">
+                            You
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="clock"
+                    id="whiteClock"
+                >
+                    10:00
+                </div>
+
+            </div>
+
+
+            <!-- BOARD CONTROLS -->
+
+            <div class="board-controls">
+
+                <button
+                    class="control-button glass"
+                    id="flipBoardButton"
+                >
+                    ↻ Flip Board
+                </button>
+
+                <button
+                    class="control-button glass"
+                    id="drawButton"
+                >
+                    ½ Offer Draw
+                </button>
+
+                <button
+                    class="control-button glass"
+                    id="resignButton"
+                >
+                    ⚑ Resign
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- RIGHT PANEL -->
+
+        <aside class="game-panel">
+
+
+            <!-- GAME INFO -->
+
+            <div class="panel-card glass">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            CCHESS ARENA
+                        </span>
+
+                        <h1>
+                            Game
+                        </h1>
+
+                    </div>
+
+
+                    <div class="live-badge">
+
+                        <span></span>
+
+                        LIVE
+
+                    </div>
+
+                </div>
+
+
+                <!-- TURN -->
+
+                <div class="turn-card">
+
+                    <span class="turn-label">
+                        CURRENT TURN
+                    </span>
+
+                    <strong id="turnText">
+                        White
+                    </strong>
+
+                    <p id="turnDescription">
+                        Make your move.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOVE HISTORY -->
+
+            <div class="panel-card glass">
+
+                <div class="moves-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            GAME
+                        </span>
+
+                        <h2>
+                            Move History
+                        </h2>
+
+                    </div>
+
+                    <span id="moveCount">
+                        0 moves
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="move-history"
+                    id="moveHistory"
+                >
+
+                    <div class="empty-moves">
+
+                        <div class="empty-icon">
+                            ♟
+                        </div>
+
+                        <p>
+                            Your moves will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="panel-card glass actions-card">
+
+                <button
+                    class="primary-action"
+                    id="restartButton"
+                >
+                    ↻ Restart
+                </button>
+
+                <button
+                    class="secondary-action"
+                    id="flipBoardButton2"
+                >
+                    ⇄ Flip Board
+                </button>
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+
+            <div class="account-mini glass">
+
+                <div class="account-mini-avatar">
+                    ♙
+                </div>
+
+                <div class="account-mini-info">
+
+                    <span>
+                        PLAYING AS
+                    </span>
+
+                    <strong id="accountName">
+                        You
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </aside>
+
+    </main>
+
+
+    <!-- GAME OVER MODAL -->
+
+    <div
+        class="modal-backdrop hidden"
+        id="gameOverModal"
+    >
+
+        <div class="game-over-modal glass">
+
+            <button
+                class="close-button"
+                id="closeGameOver"
+            >
+                ×
+            </button>
+
+            <div class="game-over-icon">
+                ♛
+            </div>
+
+            <span class="section-label">
+                GAME OVER
+            </span>
+
+            <h2 id="gameOverTitle">
+                Checkmate
+            </h2>
+
+            <p id="gameOverMessage">
+                The game has ended.
+            </p>
+
+            <button
+                class="primary-action"
+                id="gameOverRestart"
+            >
+                Play Again
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESIGN MODAL -->
+
+    <div
+        class="modal-backdrop hidden"
+        id="resignModal"
+    >
+
+        <div class="confirm-modal glass">
+
+            <div class="confirm-icon">
+                ⚑
+            </div>
+
+            <span class="section-label">
+                RESIGN GAME
+            </span>
+
+            <h2>
+                Are you sure?
+            </h2>
+
+            <p>
+                Resigning will end the current game.
+            </p>
+
+
+            <div class="confirm-actions">
+
+                <button
+                    class="secondary-action"
+                    id="cancelResign"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="danger-action"
+                    id="confirmResign"
+                >
+                    Resign
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import { initializeApp } from
+        "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCviaG3ox4nrZciQBUZmOXdRr9zpDipVGg",
+
+            authDomain:
+                "cchess-db9a2.firebaseapp.com",
+
+            projectId:
+                "cchess-db9a2",
+
+            storageBucket:
+                "cchess-db9a2.firebasestorage.app",
+
+            messagingSenderId:
+                "931669373690",
+
+            appId:
+                "1:931669373690:web:4a9233bb78b7df6e2e8f43"
+
+        };
+
+        const app =
+            initializeApp(firebaseConfig);
+
+        console.log(
+            "🔥 CCHESS Firebase connected"
+        );
+
+    </script>
+
+
+    <!-- CHESS ENGINE -->
+
+    <script src="play.js"></script>
+
+</body>
+
+</html>
