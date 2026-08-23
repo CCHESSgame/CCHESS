@@ -1,18 +1,43 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+/* =========================================================
+   CCHESS — FIREBASE
+   Shared Firebase configuration + services
+========================================================= */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    updateProfile
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 import {
     getFirestore,
     doc,
     setDoc,
-    getDoc
+    getDoc,
+    updateDoc,
+    addDoc,
+    collection,
+    getDocs,
+    query,
+    where,
+    orderBy,
+    limit,
+    serverTimestamp,
+    onSnapshot,
+    runTransaction
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
 
 const firebaseConfig = {
     apiKey: "AIzaSyCviaG3ox4nrZciQBUZmOXdRr9zpDipVGg",
@@ -24,6 +49,10 @@ const firebaseConfig = {
 };
 
 
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
@@ -31,16 +60,36 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
+/* =========================================================
+   EXPORTS
+========================================================= */
+
 export {
+    // Firebase
+    app,
     auth,
     db,
 
+    // Authentication
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged,
+    updateProfile,
 
+    // Firestore
     doc,
     setDoc,
-    getDoc
+    getDoc,
+    updateDoc,
+    addDoc,
+    collection,
+    getDocs,
+    query,
+    where,
+    orderBy,
+    limit,
+    serverTimestamp,
+    onSnapshot,
+    runTransaction
 };
