@@ -1,7 +1,15 @@
 [build]
   publish = "."
 
+# Keep the homepage available at /
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
+
+# Don't rewrite real files/pages through index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
